@@ -6,4 +6,5 @@ app.use(express.json({ limit: '5mb' }));
 
 app.post('/', (request,  response) => {
     console.log(request.body);
+    response.writeHead(200);
 })
