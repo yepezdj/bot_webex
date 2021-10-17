@@ -31,7 +31,7 @@ function proccess(data) {
         gatherSpecs();
     } */
 
-    console.log(Object.getOwnPropertyNames(data));
+    console.log(data.resource);
 
 
 
