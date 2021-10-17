@@ -5,8 +5,8 @@ const server = net.createServer(socket => {
 
     socket.on("data", data => {
         console.log(typeof data);
-        console.log(data.toString())
-        proccess(data);
+        //console.log(data.toString())
+        //proccess(data);
     })
 })
 
