@@ -30,6 +30,7 @@ function proccess(data) {
         cli.welcome();
         gatherSpecs();
     } */
+    console.log(Object.values(data))
 
     console.log(data.resource);
 
