@@ -31,13 +31,9 @@ function proccess(data) {
         gatherSpecs();
     } */
     //var jsonArray = '{"required":1, "minlength":2}'
-    var jsonParsedArray = JSON.parse(data);
-    for (key in jsonParsedArray) {
-        if (jsonParsedArray.hasOwnProperty(key)) {
-            console.log("%c " + key + " = " + jsonParsedArray[key], "color:cyan");
-        }
-    }
-
+    var obj = JSON.parse(data);
+    console.log(typeof obj);
+    console.log(Object.values(obj));
 
 
 }
