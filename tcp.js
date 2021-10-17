@@ -30,9 +30,13 @@ function proccess(data) {
         cli.welcome();
         gatherSpecs();
     } */
-    console.log(Object.values(data))
-
-    console.log(data.resource);
+    //var jsonArray = '{"required":1, "minlength":2}'
+    var jsonParsedArray = JSON.parse(data);
+    for (key in jsonParsedArray) {
+        if (jsonParsedArray.hasOwnProperty(key)) {
+            console.log("%c " + key + " = " + jsonParsedArray[key], "color:cyan");
+        }
+    }
 
 
 
