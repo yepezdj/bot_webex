@@ -7,6 +7,8 @@ app.use(express.json({
     limit: '5mb'
 }));
 
+var myHeaders = new Headers();
+
 app.post('/', (request, response) => {
     console.log(request.body.resource);
     var data = request.body.data
@@ -23,7 +25,7 @@ app.post('/', (request, response) => {
 function welcome(data) {
     if (data.text) {
         console.log(data.text)
-        var myHeaders = new Headers();
+        
         myHeaders.append("Authorization", process.env.TOKEN_BEARER);
         myHeaders.append("Content-Type", "application/json");
 
