@@ -3,116 +3,113 @@ const express = require('express');
 const app = express();
 app.listen(50001, () => console.log('Listening at 50001'));
 app.use(express.static('public'));
-app.use(express.json({ limit: '5mb' }));
+app.use(express.json({
+    limit: '5mb'
+}));
 
-app.post('/', (request,  response) => {
+app.post('/', (request, response) => {
     console.log(request.body.resource);
     var data = request.body.data
-    if (request.body.resource =='messages') {
+    if (request.body.resource == 'messages') {
         //send welcome card
-        welcome (data)
+        welcome(data)
     }
-    if (request.body.resource =='attachmentActions') {
-        
+    if (request.body.resource == 'attachmentActions') {
+
     }
     response.end();
 })
 
-function welcome (data){
+function welcome(data) {
     if (data.text) {
         console.log(data.text)
         var myHeaders = new Headers();
-myHeaders.append("Authorization", process.env.TOKEN_BEARER);
-myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", process.env.TOKEN_BEARER);
+        myHeaders.append("Content-Type", "application/json");
 
-var raw = JSON.stringify({
-  "toPersonEmail": data.personEmail,
-  "text": "test from postman",
-  "attachments": [
-    {
-      "contentType": "application/vnd.microsoft.card.adaptive",
-      "content": {
-        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-        "type": "AdaptiveCard",
-        "version": "1.2",
-        "body": [
-          {
-            "type": "TextBlock",
-            "text": "Bot assistant Security team",
-            "size": "Large",
-            "weight": "Bolder"
-          },
-          {
-            "type": "TextBlock",
-            "text": "Hi! I am SEC-BOT, I am a bot that can help you solve some",
-            "isSubtle": true
-          },
-          {
-            "type": "TextBlock",
-            "text": "inquires about working in Sykes, the cisco security team and",
-            "isSubtle": true,
-            "spacing": "None"
-          },
-          {
-            "type": "TextBlock",
-            "text": "also help you with you cases give you some basic ",
-            "isSubtle": true,
-            "spacing": "None"
-          },
-          {
-            "type": "TextBlock",
-            "text": " troubleshooting steps.",
-            "isSubtle": true,
-            "spacing": "None"
-          },
-          {
-            "type": "TextBlock",
-            "text": "Tell me. How can I help you today?"
-          }
-        ],
-        "actions": [
-          {
-            "type": "Action.Submit",
-            "title": "Sykes",
-            "data": {
-              "action": "sykes"
-            }
-          },
-          {
-            "type": "Action.Submit",
-            "title": "Security team",
-            "data": {
-              "action": "sec"
-            }
-          },
-          {
-            "type": "Action.Submit",
-            "title": "Troubleshoting",
-            "data": {
-              "action": "ts"
-            }
-          }
-        ]
-      }
-    }
-  ]
-});
+        var raw = JSON.stringify({
+            "toPersonEmail": data.personEmail,
+            "text": "test from postman",
+            "attachments": [{
+                "contentType": "application/vnd.microsoft.card.adaptive",
+                "content": {
+                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                    "type": "AdaptiveCard",
+                    "version": "1.2",
+                    "body": [{
+                            "type": "TextBlock",
+                            "text": "Bot assistant Security team",
+                            "size": "Large",
+                            "weight": "Bolder"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "Hi! I am SEC-BOT, I am a bot that can help you solve some",
+                            "isSubtle": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "inquires about working in Sykes, the cisco security team and",
+                            "isSubtle": true,
+                            "spacing": "None"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "also help you with you cases give you some basic ",
+                            "isSubtle": true,
+                            "spacing": "None"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": " troubleshooting steps.",
+                            "isSubtle": true,
+                            "spacing": "None"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "Tell me. How can I help you today?"
+                        }
+                    ],
+                    "actions": [{
+                            "type": "Action.Submit",
+                            "title": "Sykes",
+                            "data": {
+                                "action": "sykes"
+                            }
+                        },
+                        {
+                            "type": "Action.Submit",
+                            "title": "Security team",
+                            "data": {
+                                "action": "sec"
+                            }
+                        },
+                        {
+                            "type": "Action.Submit",
+                            "title": "Troubleshoting",
+                            "data": {
+                                "action": "ts"
+                            }
+                        }
+                    ]
+                }
+            }]
+        });
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
 
-fetch("https://webexapis.com/v1/messages", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+        fetch("https://webexapis.com/v1/messages", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
     }
 }
 
-function cards (){
+function cards() {
 
 }
-
