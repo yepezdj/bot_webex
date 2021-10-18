@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fetch = require("node-fetch");
 const express = require('express');
 const app = express();
 app.listen(50001, () => console.log('Listening at 50001'));
@@ -7,7 +8,7 @@ app.use(express.json({
     limit: '5mb'
 }));
 
-var myHeaders = new Headers();
+
 
 app.post('/', (request, response) => {
     console.log(request.body.resource);
@@ -23,9 +24,11 @@ app.post('/', (request, response) => {
 })
 
 function welcome(data) {
+
     if (data.text) {
         console.log(data.text)
-        
+        //var myHeaders = new Headers();
+        var myHeaders = new fetch.Headers();
         myHeaders.append("Authorization", process.env.TOKEN_BEARER);
         myHeaders.append("Content-Type", "application/json");
 
