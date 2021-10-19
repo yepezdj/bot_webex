@@ -1,5 +1,7 @@
 require('dotenv').config();
 //const fetch = require('node-fetch');
+var XMLHttpRequest = require('xhr2');
+var xhr = new XMLHttpRequest();
 const express = require('express');
 const app = express();
 app.listen(50001, () => console.log('Listening at 50001!'));
@@ -29,7 +31,7 @@ function welcome(data) {
         console.log(data.text)
         //var myHeaders = new Headers();
 
-        var xhr = new XMLHttpRequest();
+        //var xhr = new XMLHttpRequest();
         xhr.open("POST", "https://webexapis.com/v1/messages", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);

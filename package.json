@@ -13,6 +13,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "node-fetch": "^3.0.0",
-    "querystring": "^0.2.1"
+    "querystring": "^0.2.1",
+    "xhr2": "^0.2.1"
   }
 }
