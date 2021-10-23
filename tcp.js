@@ -48,6 +48,7 @@ function verify(data) {
         }
         //Verify if user exist in DB
         if (Array.isArray(result) && result.length) {
+            console.log('pistola')
             console.log(result[0].timestamp);
             var now = Date.now();
             var dif = now - result[0].timestamp;
@@ -57,10 +58,9 @@ function verify(data) {
                 database.query(sql2, function (err, result) {
                     if (err) throw err;
                 });
-                welcome(data);
             }
-            console.log('pistola')
-            console.log(dif);
+            welcome(data);
+
         } else {
             console.log('no pistola')
             database.connect(function (err) {
@@ -81,9 +81,6 @@ function verify(data) {
 function welcome(data) {
 
     if (data.text) {
-        console.log(data.text)
-        //var myHeaders = new Headers();
-        //var xhr = new XMLHttpRequest();
         xhr.open("POST", "https://webexapis.com/v1/messages", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
@@ -155,11 +152,11 @@ function welcome(data) {
                 }
             }]
         }));
-        xhr.onload = function () {
+        /* xhr.onload = function () {
             console.log(this.responseText);
             var data = JSON.parse(this.responseText);
             //console.log(data);
-        }
+        } */
     }
 }
 
