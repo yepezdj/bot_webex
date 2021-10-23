@@ -50,6 +50,15 @@ function verify(data) {
             console.log('pistola')
         } else {
             console.log('no pistola')
+            database.connect(function (err) {
+                let post = {
+                    email: data.email
+                };
+                let sql1 = 'INSERT INTO users SET ?';
+                database.query(sql1, post, function (err, result) {
+                    if (err) throw err;
+                });
+            });
         }
         //console.log(result);
     });
