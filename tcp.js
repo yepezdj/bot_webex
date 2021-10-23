@@ -57,7 +57,7 @@ function verify(data) {
             database.connect(function (err) {
                 let post = {
                     email: data.personEmail,
-                    timestamp: Date.now()
+                    timestamp: parseInt(Date.now())
                 };
                 let sql1 = 'INSERT INTO users SET ?';
                 database.query(sql1, post, function (err, result) {
