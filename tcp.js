@@ -46,11 +46,20 @@ function verify(data) {
         if (err) {
             throw err;
         }
+        //Verify if user exist in DB
         if (Array.isArray(result) && result.length) {
             console.log(result[0].timestamp);
-            var dif = Date.now()-result[0].timestamp;
+            var now = Date.now();
+            var dif = now - result[0].timestamp;
+            //Verify last interaction
+            if (dif <= 300000) {
+                let sql2 = `UPDATE users SET timestamp ='${now}' WHERE email ='${email}'`;
+                database.query(sql1, post, function (err, result) {
+                    if (err) throw err;
+                });
+                welcome(data);
+            }
             console.log('pistola')
-            console.log(Date.now());
             console.log(dif);
         } else {
             console.log('no pistola')
@@ -64,8 +73,8 @@ function verify(data) {
                     if (err) throw err;
                 });
             });
+            welcome(data)
         }
-        //console.log(result);
     });
 }
 
