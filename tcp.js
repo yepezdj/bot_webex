@@ -50,7 +50,7 @@ function verify(data) {
         if (result.length) {
             var dif = parseInt(Date.now())-parseInt(result.timestamp);
             console.log('pistola')
-            console.log(typeof (Date.now()));
+            console.log(dif);
         } else {
             console.log('no pistola')
             database.connect(function (err) {
