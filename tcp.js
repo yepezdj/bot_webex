@@ -46,7 +46,12 @@ function verify(data) {
         if (err) {
             throw err;
         }
-        console.log(result);
+        if (result.length) {
+            console.log('pistola')
+        } else {
+            console.log('no pistola')
+        }
+        //console.log(result);
     });
 }
 
