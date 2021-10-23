@@ -48,7 +48,8 @@ function verify(data) {
         }
         //result=JSON.stringify(result);
         if (Array.isArray(result) && result.length) {
-            var dif = parseInt(Date.now())-parseInt(result.timestamp);
+            console.log(result.timestamp);
+            var dif = Date.now()-parseInt(result.timestamp);
             console.log('pistola')
             console.log(typeof result);
             console.log(dif);
@@ -56,8 +57,8 @@ function verify(data) {
             console.log('no pistola')
             database.connect(function (err) {
                 let post = {
-                    email: data.personEmail,
-                    timestamp: parseInt(Date.now())
+                    email: data.personEmail
+                    //timestamp: parseInt(Date.now())
                 };
                 let sql1 = 'INSERT INTO users SET ?';
                 database.query(sql1, post, function (err, result) {
