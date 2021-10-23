@@ -47,10 +47,10 @@ function verify(data) {
             throw err;
         }
         result=JSON.stringify(result);
-        if (result.length) {
+        if (Array.isArray(result) && result.length) {
             var dif = parseInt(Date.now())-parseInt(result.timestamp);
             console.log('pistola')
-            console.log(result.timestamp);
+            console.log(typeof result);
             console.log(dif);
         } else {
             console.log('no pistola')
