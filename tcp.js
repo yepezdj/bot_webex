@@ -57,8 +57,8 @@ function verify(data) {
             console.log('no pistola')
             database.connect(function (err) {
                 let post = {
-                    email: data.personEmail
-                    //timestamp: parseInt(Date.now())
+                    email: data.personEmail,
+                    timestamp: Date.now()
                 };
                 let sql1 = 'INSERT INTO users SET ?';
                 database.query(sql1, post, function (err, result) {
