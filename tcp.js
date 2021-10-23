@@ -48,12 +48,11 @@ function verify(data) {
         }
         //Verify if user exist in DB
         if (Array.isArray(result) && result.length) {
-            console.log('pistola')
-            console.log(result[0].timestamp);
+            console.log('pistola');
             var now = Date.now();
             var dif = now - result[0].timestamp;
             //Verify last interaction
-            if (dif >= 30) {
+            if (dif >= 5000) {
                 let sql2 = `UPDATE users SET timestamp ='${now}' WHERE email ='${email}'`;
                 database.query(sql2, function (err, result) {
                     if (err) throw err;
