@@ -46,7 +46,7 @@ function verify(data) {
         if (err) {
             throw err;
         }
-        result=JSON.stringify(result);
+        //result=JSON.stringify(result);
         if (Array.isArray(result) && result.length) {
             var dif = parseInt(Date.now())-parseInt(result.timestamp);
             console.log('pistola')
