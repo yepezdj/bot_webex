@@ -34,7 +34,8 @@ app.post('/', (request, response) => {
     }
     if (request.body.resource == 'attachmentActions') {
         var input = request.body.data.inputs.action;
-        console.log(input);
+        //console.log(input);
+        cards(input)
     }
     response.end();
 });
@@ -160,6 +161,17 @@ function welcome(data) {
     }
 }
 
-function cards() {
+function cards(input) {
 
+    //level 1
+    switch (input) {
+        case 'ts':
+            // code block
+            console.log('ts');
+            break;
+        case 'sykes':
+            console.log('sykes');
+            break;
+        default:
+    }
 }
