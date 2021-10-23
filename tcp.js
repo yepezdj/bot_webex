@@ -47,8 +47,8 @@ function verify(data) {
             throw err;
         }
         if (Array.isArray(result) && result.length) {
-            console.log(result);
-            console.log(result.timestamp);
+            console.log(result[0]);
+            console.log(result[0].timestamp);
             var dif = Date.now()-parseInt(result.timestamp);
             console.log('pistola')
             console.log(typeof result);
