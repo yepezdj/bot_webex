@@ -46,8 +46,11 @@ function verify(data) {
         if (err) {
             throw err;
         }
+        
         if (result.length) {
             console.log('pistola')
+            var Time = Date.getTime();
+            console.log(Time);
         } else {
             console.log('no pistola')
             database.connect(function (err) {
