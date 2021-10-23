@@ -48,14 +48,15 @@ function verify(data) {
         }
         
         if (result.length) {
+            var dif = Date.now()-result.timestamp;
             console.log('pistola')
-            var Time = Date.now();
-            console.log(Time);
+            console.log(dif);
         } else {
             console.log('no pistola')
             database.connect(function (err) {
                 let post = {
-                    email: data.personEmail
+                    email: data.personEmail,
+                    timestamp: Date.now()
                 };
                 let sql1 = 'INSERT INTO users SET ?';
                 database.query(sql1, post, function (err, result) {
