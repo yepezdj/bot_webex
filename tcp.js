@@ -57,8 +57,9 @@ function verify(data) {
                 database.query(sql2, function (err, result) {
                     if (err) throw err;
                 });
+                welcome(data);
             }
-            welcome(data);
+
 
         } else {
             console.log('no pistola')
