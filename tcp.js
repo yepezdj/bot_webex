@@ -54,7 +54,7 @@ function verify(data) {
             //Verify last interaction
             if (dif >= 30) {
                 let sql2 = `UPDATE users SET timestamp ='${now}' WHERE email ='${email}'`;
-                database.query(sql1, post, function (err, result) {
+                database.query(sql2, post, function (err, result) {
                     if (err) throw err;
                 });
                 welcome(data);
