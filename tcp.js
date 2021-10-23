@@ -48,7 +48,7 @@ function verify(data) {
         }
         
         if (result.length) {
-            var dif = Date.now()-result.timestamp;
+            var dif = parseInt(Date.now())-result.timestamp;
             console.log('pistola')
             console.log(dif);
         } else {
