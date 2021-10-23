@@ -48,9 +48,9 @@ function verify(data) {
         }
         
         if (result.length) {
-            var dif = parseInt(Date.now())-parseInt(result.timestamp);
+            //var dif = parseInt(Date.getTime())-parseInt(result.timestamp);
             console.log('pistola')
-            console.log(dif);
+            console.log(Date.getTime());
         } else {
             console.log('no pistola')
             database.connect(function (err) {
