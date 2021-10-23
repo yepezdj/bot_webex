@@ -46,11 +46,12 @@ function verify(data) {
         if (err) {
             throw err;
         }
-        
+        result=JSON.stringify(result);
         if (result.length) {
             var dif = parseInt(Date.now())-parseInt(result.timestamp);
             console.log('pistola')
             console.log(result);
+            console.log(dif);
         } else {
             console.log('no pistola')
             database.connect(function (err) {
