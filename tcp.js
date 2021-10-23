@@ -52,7 +52,7 @@ function verify(data) {
             console.log('no pistola')
             database.connect(function (err) {
                 let post = {
-                    email: data.email
+                    email: data.personEmail
                 };
                 let sql1 = 'INSERT INTO users SET ?';
                 database.query(sql1, post, function (err, result) {
