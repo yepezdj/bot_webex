@@ -172,6 +172,5 @@ function cards(input) {
         case 'sykes':
             console.log('sykes');
             break;
-        default:
     }
 }
