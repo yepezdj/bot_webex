@@ -28,13 +28,13 @@ database.connect(function (err) {
 
 app.post('/', (request, response) => {
     console.log(request.body.resource);
-    var data = request.body.data
     if (request.body.resource == 'messages') {
-        //send welcome card
+        var data = request.body.data
         verify(data)
     }
     if (request.body.resource == 'attachmentActions') {
-
+        var inputs = request.body.inputs
+        console.log(inputs);
     }
     response.end();
 });
@@ -52,7 +52,7 @@ function verify(data) {
             var now = Date.now();
             var dif = now - result[0].timestamp;
             //Verify last interaction
-            if (dif >= 20000) {
+            if (dif >= 300000) {
                 let sql2 = `UPDATE users SET timestamp ='${now}' WHERE email ='${email}'`;
                 database.query(sql2, function (err, result) {
                     if (err) throw err;
