@@ -33,8 +33,8 @@ app.post('/', (request, response) => {
         verify(data)
     }
     if (request.body.resource == 'attachmentActions') {
-        var inputs = request.body.data.inputs;
-        console.log(inputs);
+        var input = request.body.data.inputs.action;
+        console.log(input);
     }
     response.end();
 });
