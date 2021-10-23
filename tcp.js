@@ -49,7 +49,7 @@ function verify(data) {
         
         if (result.length) {
             console.log('pistola')
-            var Time = Date.getTime();
+            var Time = Date.now();
             console.log(Time);
         } else {
             console.log('no pistola')
