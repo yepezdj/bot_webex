@@ -121,7 +121,7 @@ function get_card(data) {
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
             xhr.send(JSON.stringify({
-                "toPersonEmail": data.personEmail,
+                "roomId": data.roomId,
                 "text": "Message",
                 "attachments": attach2
             }));
