@@ -87,23 +87,23 @@ function welcome(data) {
             throw err;
         }
         attach = result[0].content;
-        console.log(attach)
+/*         console.log(attach)
         console.log(typeof attach)
         ata =String.raw(attach)
         console.log(ata)
-        console.log(typeof ata)
+        console.log(typeof ata) */
     });
 
-    /* if (data.text) {
+    if (data.text) {
         xhr.open("POST", "https://webexapis.com/v1/messages", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
         xhr.send(JSON.stringify({
             "toPersonEmail": data.personEmail,
             "text": "Message",
-            "attachments": String.raw(attach)
+            "attachments": `'${attach}'`
         }));
-    } */
+    }
 }
 
 function cards(input) {
