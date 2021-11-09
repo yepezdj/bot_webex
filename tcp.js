@@ -88,10 +88,12 @@ function welcome(data) {
         }
         attach = result[0].content;
         console.log(attach)
-        console.log(typeof attach)
+        ata =String.raw(attach)
+        console.log(ata)
+        console.log(typeof ata)
     });
 
-    if (data.text) {
+    /* if (data.text) {
         xhr.open("POST", "https://webexapis.com/v1/messages", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
@@ -100,7 +102,7 @@ function welcome(data) {
             "text": "Message",
             "attachments": String.raw(attach)
         }));
-    }
+    } */
 }
 
 function cards(input) {
