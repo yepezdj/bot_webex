@@ -81,77 +81,24 @@ function verify(data) {
 
 function welcome(data) {
 
+    let sql = `SELECT * FROM actions WHERE idactions = 10`;
+    let query = database.query(sql, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        console.log(result)
+    });
+
+
+
     if (data.text) {
         xhr.open("POST", "https://webexapis.com/v1/messages", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
         xhr.send(JSON.stringify({
             "toPersonEmail": data.personEmail,
-            "text": "test from postman",
-            "attachments": [{
-                "contentType": "application/vnd.microsoft.card.adaptive",
-                "content": {
-                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-                    "type": "AdaptiveCard",
-                    "version": "1.2",
-                    "body": [{
-                            "type": "TextBlock",
-                            "text": "Bot assistant Security team",
-                            "size": "Large",
-                            "weight": "Bolder"
-                        },
-                        {
-                            "type": "TextBlock",
-                            "text": "Hi! I am SEC-BOT, I am a bot that can help you solve some",
-                            "isSubtle": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "text": "inquires about working in Sykes, the cisco security team and",
-                            "isSubtle": true,
-                            "spacing": "None"
-                        },
-                        {
-                            "type": "TextBlock",
-                            "text": "also help you with you cases give you some basic ",
-                            "isSubtle": true,
-                            "spacing": "None"
-                        },
-                        {
-                            "type": "TextBlock",
-                            "text": " troubleshooting steps.",
-                            "isSubtle": true,
-                            "spacing": "None"
-                        },
-                        {
-                            "type": "TextBlock",
-                            "text": "Tell me. How can I help you today?"
-                        }
-                    ],
-                    "actions": [{
-                            "type": "Action.Submit",
-                            "title": "Sykes",
-                            "data": {
-                                "action": "sykes"
-                            }
-                        },
-                        {
-                            "type": "Action.Submit",
-                            "title": "Security team",
-                            "data": {
-                                "action": "sec"
-                            }
-                        },
-                        {
-                            "type": "Action.Submit",
-                            "title": "Troubleshoting",
-                            "data": {
-                                "action": "ts"
-                            }
-                        }
-                    ]
-                }
-            }]
+            "text": "Message",
+            "attachments":
         }));
     }
 }
