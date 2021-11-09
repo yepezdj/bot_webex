@@ -79,28 +79,26 @@ function verify(data) {
 
 function welcome(data) {
 
+    var attach
+
     let sql = `SELECT * FROM actions WHERE idactions = 10`;
     let query = database.query(sql, (err, result) => {
         if (err) {
             throw err;
         }
-        console.log(result)
-        console.log(result[0])
-        console.log(result[0].content)
+        attach = result[0].content;
     });
 
-
-
-    /* if (data.text) {
+    if (data.text) {
         xhr.open("POST", "https://webexapis.com/v1/messages", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
         xhr.send(JSON.stringify({
             "toPersonEmail": data.personEmail,
             "text": "Message",
-            "attachments":
+            "attachments": attach
         }));
-    } */
+    }
 }
 
 function cards(input) {
