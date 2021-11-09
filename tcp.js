@@ -102,7 +102,6 @@ function welcome(data) {
 }
 
 function get_card(data) {
-    console.log("hello");
     var attach2
     var action = data.inputs.action
     console.log(action);
@@ -113,6 +112,8 @@ function get_card(data) {
             throw err;
         }
         attach2 = JSON.parse(result2[0].content)
+        console.log("hello");
+        console.log(data);
 
         if (data.text) {
             console.log('a')
