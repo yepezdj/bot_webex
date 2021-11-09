@@ -70,6 +70,7 @@ function verify(data) {
                     if (err) throw err;
                 });
             });
+            welcome(data);
             ////si quieres pon que ya está chateando con el bot
         }
     });
