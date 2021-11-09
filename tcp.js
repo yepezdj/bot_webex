@@ -53,15 +53,13 @@ function verify(data) {
             var now = Date.now();
             var dif = now - result[0].timestamp;
             //Verify last interaction
-            if (dif >= 300000) {
+            if (dif >= 300) {
                 let sql2 = `UPDATE users SET timestamp ='${now}' WHERE email ='${email}'`;
                 database.query(sql2, function (err, result) {
                     if (err) throw err;
                 });
                 welcome(data);
             }
-
-
         } else {
             console.log('no pistola')
             database.connect(function (err) {
