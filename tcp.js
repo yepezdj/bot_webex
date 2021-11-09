@@ -86,7 +86,7 @@ function welcome(data) {
         if (err) {
             throw err;
         }
-        attach = result[0].content;
+        attach = JSON.parse(result[0].content)
 /*         console.log(attach)
         console.log(typeof attach)
         ata =String.raw(attach)
@@ -101,7 +101,7 @@ function welcome(data) {
             xhr.send(JSON.stringify({
                 "toPersonEmail": data.personEmail,
                 "text": "Message",
-                "attachments": `${attach}`,
+                "attachments": attach
             }));
             console.log(attach)
         }
