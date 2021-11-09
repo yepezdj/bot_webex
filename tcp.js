@@ -153,11 +153,6 @@ function welcome(data) {
                 }
             }]
         }));
-        /* xhr.onload = function () {
-            console.log(this.responseText);
-            var data = JSON.parse(this.responseText);
-            //console.log(data);
-        } */
     }
 }
 
