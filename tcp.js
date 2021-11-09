@@ -98,7 +98,7 @@ function welcome(data) {
         xhr.send(JSON.stringify({
             "toPersonEmail": data.personEmail,
             "text": "Message",
-            "attachments": attach
+            "attachments": String.raw(attach)
         }));
     }
 }
