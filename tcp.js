@@ -102,10 +102,11 @@ function welcome(data) {
 }
 
 function get_card(data) {
-
+    console.log("hello");
     var action = data.inputs.action
+    console.log(action);
 
-    let sql = `SELECT content FROM actions WHERE keyword = '${action}'`;
+    let sql = `SELECT * FROM actions WHERE keyword = '${action}'`;
     let query = database.query(sql, (err, result) => {
         if (err) {
             throw err;
