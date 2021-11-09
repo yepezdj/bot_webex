@@ -101,7 +101,7 @@ function welcome(data) {
             xhr.send(JSON.stringify({
                 "toPersonEmail": data.personEmail,
                 "text": "Message",
-                "attachments": `'${attach}'`
+                "attachments": `${attach}`
             }));
             console.log(attach)
         }
