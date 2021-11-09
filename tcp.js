@@ -105,7 +105,7 @@ function welcome(data) {
         }
     });
 
-    
+}
 
 function cards(input) {
 
