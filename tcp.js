@@ -87,7 +87,6 @@ function welcome(data) {
         attach = JSON.parse(result[0].content)
 
         if (data.text) {
-            console.log('a')
             xhr.open("POST", "https://webexapis.com/v1/messages", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
@@ -115,7 +114,7 @@ function get_card(data) {
         console.log("hello");
         console.log(data);
 
-        if (data.text) {
+        if (data.type == 'submit') {
             console.log('a')
             xhr.open("POST", "https://webexapis.com/v1/messages", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
