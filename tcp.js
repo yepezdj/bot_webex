@@ -28,14 +28,12 @@ database.connect(function (err) {
 
 app.post('/', (request, response) => {
     console.log(request.body.resource);
+    var data = request.body.data
     if (request.body.resource == 'messages') {
-        var data = request.body.data
         verify(data)
     }
     if (request.body.resource == 'attachmentActions') {
-        var input = request.body.data.inputs.action;
-        //console.log(input);
-        cards(input)
+        get_card(data)
     }
     response.end();
 });
@@ -72,7 +70,7 @@ function verify(data) {
                     if (err) throw err;
                 });
             });
-            welcome(data)
+            ////si quieres pon que ya está chateando con el bot
         }
     });
 }
@@ -87,11 +85,6 @@ function welcome(data) {
             throw err;
         }
         attach = JSON.parse(result[0].content)
-/*         console.log(attach)
-        console.log(typeof attach)
-        ata =String.raw(attach)
-        console.log(ata)
-        console.log(typeof ata) */
 
         if (data.text) {
             console.log('a')
@@ -103,22 +96,33 @@ function welcome(data) {
                 "text": "Message",
                 "attachments": attach
             }));
-            console.log(attach)
         }
     });
 
 }
 
-function cards(input) {
+function get_card(data) {
 
-    //level 1
-    switch (input) {
-        case 'ts':
-            // code block
-            console.log('ts');
-            break;
-        case 'sykes':
-            console.log('sykes');
-            break;
-    }
+    var action = data.inputs.action
+
+    let sql = `SELECT content FROM actions WHERE keyword = '${action}'`;
+    let query = database.query(sql, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        attach = JSON.parse(result[0].content)
+
+        if (data.text) {
+            console.log('a')
+            xhr.open("POST", "https://webexapis.com/v1/messages", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
+            xhr.send(JSON.stringify({
+                "toPersonEmail": data.personEmail,
+                "text": "Message",
+                "attachments": attach
+            }));
+        }
+    });
+
 }
