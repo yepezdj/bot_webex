@@ -88,6 +88,7 @@ function welcome(data) {
         }
         attach = result[0].content;
         console.log(attach)
+        console.log(typeof attach)
         ata =String.raw(attach)
         console.log(ata)
         console.log(typeof ata)
