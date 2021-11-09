@@ -103,15 +103,16 @@ function welcome(data) {
 
 function get_card(data) {
     console.log("hello");
+    var attach2
     var action = data.inputs.action
     console.log(action);
 
     let sql = `SELECT * FROM actions WHERE keyword = '${action}'`;
-    let query = database.query(sql, (err, result) => {
+    let query = database.query(sql, (err, result2) => {
         if (err) {
             throw err;
         }
-        attach = JSON.parse(result[0].content)
+        attach2 = JSON.parse(result2[0].content)
 
         if (data.text) {
             console.log('a')
@@ -121,7 +122,7 @@ function get_card(data) {
             xhr.send(JSON.stringify({
                 "toPersonEmail": data.personEmail,
                 "text": "Message",
-                "attachments": attach
+                "attachments": attach2
             }));
         }
     });
