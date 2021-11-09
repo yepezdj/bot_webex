@@ -87,6 +87,8 @@ function welcome(data) {
             throw err;
         }
         console.log(result)
+        console.log(result[0])
+        console.log(result[0].content)
     });
 
 
