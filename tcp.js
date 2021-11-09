@@ -91,7 +91,7 @@ function welcome(data) {
 
 
 
-    if (data.text) {
+    /* if (data.text) {
         xhr.open("POST", "https://webexapis.com/v1/messages", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('Authorization', process.env.TOKEN_BEARER);
@@ -100,7 +100,7 @@ function welcome(data) {
             "text": "Message",
             "attachments":
         }));
-    }
+    } */
 }
 
 function cards(input) {
