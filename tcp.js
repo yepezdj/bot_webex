@@ -111,7 +111,7 @@ function get_card(data) {
         if (err) {
             throw err;
         }
-        console.log(result2[0].content);
+        console.log(typeof result2[0].content);
         attach2 = JSON.parse(result2[0].content)
 
         if (data.type == 'submit') {
